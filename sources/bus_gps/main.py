@@ -1,13 +1,13 @@
 from collections import defaultdict
 
 import requests
-from shapely.geometry import Point, LineString
-from sources.bus_gps.util import geod, azimuth, get_angle, action
 from configuration import intersections
+from shapely.geometry import Point, LineString
 from sources.bus_gps.intersection1 import predict_states as eval1
 from sources.bus_gps.intersection2 import predict_states as eval2
 from sources.bus_gps.intersection3 import predict_states as eval3
 from sources.bus_gps.intersection4 import predict_states as eval4
+from sources.bus_gps.util import geod, azimuth, get_angle, action
 
 
 def get_buses():
@@ -25,7 +25,7 @@ def get_buses():
 
 
 def filter_buses_near_intersection(intersection):
-    result = dict()
+    result = defaultdict(lambda: {})
     for bus in get_buses():
         line = LineString([bus["coordinate"], intersection["coordinate"]])
         distance = geod.geometry_length(line)
@@ -53,13 +53,14 @@ def evaluate_intersection(intersection, prev_intersection_buses, curr_intersecti
         return eval4(prev_intersection_buses, curr_intersection_buses, current_intersection_evals)
 
 
-prev_buses = defaultdict(lambda: [])
+prev_buses = defaultdict(lambda: defaultdict(lambda: {}))
 current_evals = defaultdict(lambda: {})
+
 
 def process_gps():
     global current_evals, prev_buses
 
-    curr_buses = {}
+    curr_buses = defaultdict(lambda: defaultdict(lambda: {}))
     for intersection in intersections:
         id = intersection["id"]
         curr_buses[id] = filter_buses_near_intersection(intersection)

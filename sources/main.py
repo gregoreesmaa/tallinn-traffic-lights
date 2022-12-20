@@ -1,5 +1,3 @@
-from pprint import pprint
-
 from sources.cam_feeds.main import process_feed
 from sources.bus_gps.main import process_gps
 
@@ -14,6 +12,7 @@ def process_sources(timestep, observations):
 
     for id, results in feed_results.items():
         observations[id] += results
-    for id, result in gps_results.items():
-        observations[id] += [result]
+    for intersection_id, intersection_observations in gps_results.items():
+        for id, result in intersection_observations.items():
+            observations[id] += [result]
 

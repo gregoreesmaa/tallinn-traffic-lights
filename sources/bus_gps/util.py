@@ -36,19 +36,20 @@ def true_eval(prev_bus, curr_bus, curr_results, approach1, approach2, leave1, le
 
 def decrease_confidence(results):
     for id, result in results.items():
-        result["confidence"] = 0 if round(result["confidence"], 3) <= 0 else result["confidence"] - 1 / 12
+        result["confidence_red"] = 0 if round(result["confidence_red"], 3) <= 0 else result["confidence_red"] - 1 / 12
+        result["confidence_green"] = 0 if round(result["confidence_green"], 3) <= 0 else result["confidence_green"] - 1 / 12
     return results
 
 
 def green():
     return {
-        "state": "green",
-        "confidence": 1
+        "confidence_green": 1,
+        "confidence_red": 0
     }
 
 
 def red():
     return {
-        "state": "red",
-        "confidence": 1
+        "confidence_green": 0,
+        "confidence_red": 1
     }

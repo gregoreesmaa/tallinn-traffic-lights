@@ -576,5 +576,113 @@ lights = {
             "green_pos": (579, 84),
             "slice_size": 2
         },
+    ],
+    "foor13": [
+        # Intersection 4
+        # Buses only: track 0
+        {
+            "type": "condition",
+            "state": "red",
+            "if": "jfoor6",
+            "has_state": "green"
+        },
+        {
+            "type": "condition",
+            "state": "red",
+            "if": "foor16",
+            "has_state": "green"
+        }
+    ],
+    "foor14": [
+        # Intersection 4
+        # Buses only: track 1
+        {
+            "type": "condition",
+            "state": "red",
+            "if": "jfoor7",
+            "has_state": "green"
+        },
+        {
+            "type": "condition",
+            "state": "red",
+            "if": "foor15",
+            "has_state": "green"
+        },
+        {
+            "type": "condition",
+            "state": "red",
+            "if": "foor16",
+            "has_state": "green"
+        }
+    ],
+    "foor15": [
+        # Intersection 4
+        # Buses only: track 2
+        {
+            "type": "condition",
+            "state": "red",
+            "if": "foor16",
+            "has_state": "green"
+        },
+        {
+            "type": "condition",
+            "state": "red",
+            "if": "foor14",
+            "has_state": "green"
+        }
+     ],
+    "foor16": [
+        # Intersection 4
+        # Buses only: track 3
+        {
+            "type": "condition",
+            "state": "red",
+            "if": "jfoor6",
+            "has_state": "green"
+        },
+        {
+            "type": "condition",
+            "state": "red",
+            "if": "foor13",
+            "has_state": "green"
+        },
+        {
+            "type": "condition",
+            "state": "red",
+            "if": "foor14",
+            "has_state": "green"
+        },
+        {
+            "type": "condition",
+            "state": "red",
+            "if": "foor15",
+            "has_state": "green"
+        }
+    ],
+    "foor17": [
+        # Intersection 1
+        # Buses only: track 4
+        {
+            "type": "condition",
+            "state": "red",
+            "if": "foor11",
+            "has_state": "green"
+        },
+        {
+            "type": "condition",
+            "state": "red",
+            "if": "foor12",
+            "has_state": "green"
+        }
+    ],
+    "foor18": [
+        # Intersection 1
+        # Buses only: track 5
+        {
+            "type": "condition",
+            "state": "red",
+            "if": "foor3",
+            "has_state": "green"
+        }
     ]
 }

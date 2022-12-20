@@ -41,7 +41,9 @@ def visualize_feed(feed, feed_images):
 
     dim = feed_images[feed + "-annotated"].shape
     res = cv2.resize(feed_images[feed + "-annotated"], (int(dim[1] * 300.0 / dim[0]), 300))
-    cv2.imshow(feed, res)
+
+    # Does not work in background thread :(
+    # cv2.imshow(feed, res)
 
 
 def visualize_analysis(light_images):
@@ -57,7 +59,9 @@ def visualize_analysis(light_images):
             overlay(lights_monitor_img, thumbnail(cv2.cvtColor((rg_images["result"] * 2550).astype(np.uint8), cv2.COLOR_GRAY2BGR)), (350, y))
             y += 50
 
-    cv2.imshow("Lights monitor", lights_monitor_img)
+
+    # Does not work in background thread :(
+    # cv2.imshow("Lights monitor", lights_monitor_img)
 
 
 def visualize(feeds, feed_images, light_images):

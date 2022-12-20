@@ -55,6 +55,7 @@ def background_loop():
 
 
 if __name__ == "__main__":
+    #background_loop()
     threading.Thread(target=background_loop, args=[]).start()
     app.run(host='localhost', port='8080')
 
